@@ -5,7 +5,7 @@ Para executar o projeto localmente, siga estes passos simples:
 1. **Clone o repositório:**
 
    ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
+   git clone git@github.com:seu-usuário/tp-webacademy-docker.git
     ```
 2. **Navegue até a pasta do projeto:**
 
