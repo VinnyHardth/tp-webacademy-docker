@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  mysql:
+    container_name: webacademy-mysql
+    restart: always
+
+    build: ./webacademy-livros-db/
+
+    env_file:
+      - ./webacademy-livros-db/.env
+
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    networks:
+      - webacademy-network
+
+  backend:
+    container_name: webacademy-backend
+    restart: always
+
+    build: ./webacademy-livros-backend/
+
+    env_file:
+      - ./webacademy-livros-backend/.env
+
+    ports:
+      - "4444:4444"
+    volumes:
+      - ./logs:/app/log
+
+    networks:
+      - webacademy-network
+    depends_on:
+      - mysql
+
+  frontend:
+    container_name: webacademy-frontend
+    restart: always
+
+    build: ./webacademy-livros-frontend/
+
+    env_file:
+      - ./webacademy-livros-frontend/.env
+
+    ports:
+      - "8000:80"
+    networks:
+      - webacademy-network
+    depends_on:
+      - backend
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: webacademy-phpmyadmin
+    restart: always
+
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=root_pass
+
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - webacademy-network
+
+networks:
+  webacademy-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+  logs:
+
+
