@@ -26,3 +26,5 @@ Para executar o projeto localmente, siga estes passos simples:
 4. **Acesse a aplicação no navegador:** Uma vez que os containers estejam em execução, você pode acessar a aplicação em seu navegador web através do [http://localhost:8000](http://localhost:8000)
 
 5. **Gerenciador de banco de dados:** Para acessar o gerenciador de banco de dados, basta abrir o seguinte link em seu navegador: [http://localhost:8080](http://localhost:8080). O phpMyAdmin já está configurado para acessar o banco de dados do projeto. 
+
+6. **Exemplos de inputs para o frontend:** estão presente no arquivo `dados-livros-exemplos.txt` na raiz do projeto.
